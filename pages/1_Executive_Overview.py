@@ -26,7 +26,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("📊 Executive Master Dashboard")
+st.title("📊 Executive Overview")
 st.markdown("---")
 
 # --------------------------------------------------
