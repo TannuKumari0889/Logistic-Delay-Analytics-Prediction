@@ -28,7 +28,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title(":green[Fleet & Fuel Analytics: Executive Master View 🚛⛽]")
+st.title(":green[Fleet & Fuel Analytics 🚛⛽]")
 st.markdown("---")
 
 # --------------------------------------------------
