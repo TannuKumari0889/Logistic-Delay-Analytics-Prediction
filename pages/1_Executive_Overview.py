@@ -169,6 +169,11 @@ with t_col2:
         
         fig6, ax6 = plt.subplots(figsize=(5, 6.5))
         sns.barplot(data=y_trips, x="Year", y="trip_id", palette="Greens_d", ax=ax6)
-    
+        
+        # Adding Percentage Labels to Bars
+        total_y_trips = y_trips["trip_id"].sum()
+        for i, val in enumerate(y_trips["trip_id"]):
+            pct = (val / total_y_trips) * 100
+            ax6.text(i, val + 1, f"{pct:.1f}%", ha='center', va='bottom', fontweight='bold')
         
         st.pyplot(fig6)
