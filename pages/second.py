@@ -22,7 +22,7 @@ st.markdown("""
         box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     </style>
-    """, unsafe_allow_stdio=True)
+    """, unsafe_allow_html=True) # FIXED THIS LINE
 
 st.title("📊 Fleet & Fuel Executive Insights")
 st.markdown("---")
