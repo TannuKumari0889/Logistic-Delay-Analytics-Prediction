@@ -7,11 +7,11 @@ from src.data_loader import load_all_tables
 from src.filters import apply_global_filters
 
 # --------------------------------------------------
-# PAGE CONFIG & PROFESSIONAL THEME
+# 1. PAGE CONFIG & LIGHT THEME (CSS)
 # --------------------------------------------------
 st.set_page_config(layout="wide", page_title="Load & Revenue Performance")
 
-# Custom CSS for clean white cards and green accents
+# Professional Light Theme with Green Accents
 st.markdown("""
 <style>
     .stApp { background-color: #fcfcfc; }
@@ -23,6 +23,7 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         border-left: 5px solid #2e7d32;
     }
+    h1, h2, h3, h4 { color: #2e7d32 !important; font-family: 'Helvetica Neue', sans-serif; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -30,7 +31,7 @@ st.title(":green[Load & Revenue Performance 💰]")
 st.markdown("---")
 
 # --------------------------------------------------
-# DATA ENGINE
+# 2. DATA ENGINE
 # --------------------------------------------------
 data = load_all_tables()
 data = apply_global_filters(data)
@@ -39,13 +40,13 @@ loads = data["loads"]
 customers = data["customers"]
 fuel = data["fuel_purchases"]
 
-# Pre-processing for Seasonality
+# Ensure datetime for seasonality
 loads['load_date'] = pd.to_datetime(loads['load_date'], errors='coerce')
 loads['Year'] = loads['load_date'].dt.year
 loads['Month'] = loads['load_date'].dt.month
 
 # --------------------------------------------------
-# KPI CALCULATIONS
+# 3. KPI CALCULATIONS
 # --------------------------------------------------
 total_revenue = loads["revenue"].sum()
 total_loads = loads["load_id"].nunique()
@@ -54,19 +55,19 @@ avg_weight = loads["weight_lbs"].mean()
 fuel_surcharge = loads["fuel_surcharge"].sum() if "fuel_surcharge" in loads.columns else 0
 accessorial_charge = loads["accessorial_charge"].sum() if "accessorial_charge" in loads.columns else 0
 
-# On-Time %
+# On-Time Delivery %
 on_time_pct = (loads["delivery_status"] == "On Time").sum() / total_loads * 100 if "delivery_status" in loads.columns and total_loads > 0 else 0
 
-# Profit Margin
+# Profit Margin (Revenue - Fuel Cost)
 total_fuel_cost = fuel["total_cost"].sum()
 profit_margin = ((total_revenue - total_fuel_cost) / total_revenue) * 100 if total_revenue > 0 else 0
 
 # --------------------------------------------------
-# KPI DISPLAY (2 Rows)
+# 4. KPI DISPLAY
 # --------------------------------------------------
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Total Revenue", f"${total_revenue/1_000_000:.2f}M")
-c2.metric("Avg Revenue/Load", f"${avg_revenue_per_load:,.0f}")
+c2.metric("Avg Revenue / Load", f"${avg_revenue_per_load:,.0f}")
 c3.metric("Total Loads", f"{total_loads:,}")
 c4.metric("On-Time Delivery", f"{on_time_pct:.1f}%")
 
@@ -79,59 +80,61 @@ c8.metric("Profit Margin", f"{profit_margin:.1f}%")
 st.markdown("---")
 
 # --------------------------------------------------
-# VISUAL ANALYTICS (Light & Pastel Theme)
+# 5. VISUAL ANALYTICS (Light Pastel Palette)
 # --------------------------------------------------
-# Define a soft pastel color palette
-light_colors = sns.color_palette("Pastel1")
+# Clean plot settings
 plt.rcParams['axes.facecolor'] = 'none'
+sns.set_context("talk", font_scale=0.8)
 
 col_left, col_right = st.columns(2)
 
 with col_left:
-    # 1. Revenue Share by Booking Type (Pie)
-    st.write("#### 📦 Revenue Share: Booking Type")
+    # A. Revenue Share by Booking Type (Pie)
+    st.write("#### Revenue Share by Booking Type (%)")
     booking_rev = loads.groupby("booking_type")["revenue"].sum()
-    fig1, ax1 = plt.subplots(figsize=(5, 5))
-    ax1.pie(booking_rev, labels=booking_rev.index, autopct="%1.1f%%", colors=light_colors, startangle=140)
+    fig1, ax1 = plt.subplots(figsize=(6, 6))
+    ax1.pie(booking_rev, labels=booking_rev.index, autopct="%1.1f%%", colors=sns.color_palette("Pastel1"), startangle=140)
     st.pyplot(fig1)
 
-    # 2. Revenue Share by Load Type (Horizontal Bar)
-    st.write("#### 🚚 Revenue Share: Load Type (%)")
-    rev_share_load = (loads.groupby("load_type")["revenue"].sum() / loads["revenue"].sum() * 100).sort_values()
+    # B. Revenue Share by Load Type (Horizontal Bar)
+    st.write("#### Revenue Share by Load Type (%)")
+    rev_share_load = (loads.groupby("load_type")["revenue"].sum() / total_revenue * 100).sort_values()
     fig2, ax2 = plt.subplots(figsize=(8, 5))
-    bars = ax2.barh(rev_share_load.index, rev_share_load.values, color=sns.color_palette("Blues_l", len(rev_share_load)))
+    # Fixed Palette to "Blues"
+    ax2.barh(rev_share_load.index, rev_share_load.values, color=sns.color_palette("Blues", len(rev_share_load)))
     for i, v in enumerate(rev_share_load.values):
-        ax2.text(v + 0.5, i, f"{v:.1f}%", va='center', fontweight='bold', color='#444444')
+        ax2.text(v + 0.5, i, f"{v:.1f}%", va='center', fontweight='bold')
     ax2.set_xlim(0, rev_share_load.max() + 10)
-    sns.despine(left=True, bottom=True)
+    sns.despine()
     st.pyplot(fig2)
 
 with col_right:
-    # 3. Customer Distribution by Status (Pie)
-    st.write("#### 👥 Customer Health: Distribution")
+    # C. Customer Distribution by Status (Pie)
+    st.write("#### Customer Distribution by Status")
     cust_status = customers['account_status'].value_counts()
-    fig3, ax3 = plt.subplots(figsize=(5, 5))
+    fig3, ax3 = plt.subplots(figsize=(6, 6))
     ax3.pie(cust_status, labels=cust_status.index, autopct='%1.1f%%', colors=sns.color_palette("Pastel2"), startangle=90)
     st.pyplot(fig3)
 
-    # 4. Total Customers by Type (Pie)
-    st.write("#### 🏗️ Customer Segment: Booking Type")
-    cust_type = customers["customer_type"].value_counts(normalize=True) * 100
-    fig4, ax4 = plt.subplots(figsize=(5, 5))
-    ax4.pie(cust_type, labels=cust_type.index, autopct="%1.1f%%", colors=sns.color_palette("Set3"))
+    # D. Total Customers by Booking Type (Pie)
+    st.write("#### Customers by Booking Segment (%)")
+    cust_type = customers["customer_type"].value_counts()
+    fig4, ax4 = plt.subplots(figsize=(6, 6))
+    ax4.pie(cust_type, labels=cust_type.index, autopct="%1.1f%%", colors=sns.color_palette("Set3"), startangle=140)
     st.pyplot(fig4)
 
 # --------------------------------------------------
-# FULL WIDTH: REVENUE SEASONALITY
+# 6. FULL WIDTH TRENDS
 # --------------------------------------------------
 st.markdown("---")
-st.write("#### 📈 Revenue Seasonality Trend by Year")
+st.write("#### Revenue Seasonality Trend by Year")
+
 monthly_rev = loads.groupby(['Year', 'Month'])['revenue'].sum().reset_index().sort_values(['Year', 'Month'])
 
-fig5, ax5 = plt.subplots(figsize=(12, 4))
+fig5, ax5 = plt.subplots(figsize=(14, 5))
 for year in monthly_rev['Year'].unique():
     data_yr = monthly_rev[monthly_rev['Year'] == year]
-    ax5.plot(data_yr['Month'], data_yr['revenue'], marker='o', label=str(year), linewidth=2)
+    ax5.plot(data_yr['Month'], data_yr['revenue'], marker='o', label=str(year), linewidth=3)
 
 plt.xticks(ticks=range(1,13), labels=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
 plt.ylabel("Revenue ($)")
