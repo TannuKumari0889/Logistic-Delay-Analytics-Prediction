@@ -107,7 +107,7 @@ c_left, c_right = st.columns(2)
 
 with c_left:
     # 1. Monthly Trend (Line Chart with % Labels)
-    st.write("#### 📈 Monthly Fuel Spend Distribution (%)")
+    st.write("#### 📈 Monthly Fuel Spend Distribution")
     fuel["month"] = fuel["purchase_date"].dt.month
     monthly_data = fuel.groupby("month")["total_cost"].sum().reset_index()
     monthly_data["pct"] = (monthly_data["total_cost"] / total_spend) * 100
@@ -130,7 +130,7 @@ with c_left:
 
 with c_right:
     # 3. Trip Distribution by Trailer Age (Bar with % Labels)
-    st.write("#### ⏳ Trip Distribution by Trailer Age Group")
+    st.write("#### ⏳ Trip Distribution by Trailer Age")
     trailers["age"] = 2025 - trailers["model_year"]
     trailers["age_grp"] = pd.cut(trailers["age"], bins=[0, 3, 7, 10], labels=["0-3 Yrs", "4-7 Yrs", "8-10 Yrs"])
     age_merge = trips.merge(trailers[["trailer_id", "age_grp"]], on="trailer_id")
