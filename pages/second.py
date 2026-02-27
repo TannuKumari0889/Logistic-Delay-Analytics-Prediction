@@ -9,7 +9,7 @@ from src.filters import apply_global_filters
 # --------------------------------------------------
 # PAGE CONFIG & PROFESSIONAL STYLING
 # --------------------------------------------------
-st.set_page_config(layout="wide", page_title="Fleet Executive Master Dashboard")
+st.set_page_config(layout="wide", page_title="Fleet & Fuel Analytics")
 
 # Custom CSS for "Card" styling and professional metrics
 st.markdown("""
