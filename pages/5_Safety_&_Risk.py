@@ -1,10 +1,10 @@
 import streamlit as st
-'''
+
 # If the user hasn't logged in on the main page, stop them here
 if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
     st.warning("Please log in on the Home page to access this dashboard.")
     st.stop()
-'''
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -74,11 +74,11 @@ col4.metric("Injury Rate %", f"{injury_pct:.2f}%")
 
 st.markdown("<br>", unsafe_allow_html=True) # Spacer
 
-col5, col6, col7, col8 = st.columns(4)
+col5, col6, col7 = st.columns(3)
 col5.metric("Avg Cost / Incident", f"${avg_cost:,.2f}")
 col6.metric("Total Incident Cost", f"${total_cost/1_000_000:.2f}M")
 col7.metric("Rate / 100k Miles", f"{incident_rate_per_100k:.2f}")
-col8.metric("Cost per Mile", f"${incident_cost_per_mile:.4f}")
+
 
 st.markdown("---")
 
