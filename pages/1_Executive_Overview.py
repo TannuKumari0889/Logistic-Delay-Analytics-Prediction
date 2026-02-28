@@ -150,11 +150,11 @@ with t_col1:
         sns.lineplot(data=monthly_rev, x="Month", y="pct_share", hue="Year", marker="o", palette="dark:green", ax=ax5, linewidth=2.5)
         
         # Adding Percentage Labels to Line Chart
-        for year in monthly_rev["Year"].unique():
-            year_data = monthly_rev[monthly_rev["Year"] == year]
-            for i, row in year_data.iterrows():
-                ax5.text(row["Month"], row["pct_share"] + 0.5, f"{row['pct_share']:.1f}%", 
-                         ha="center", fontsize=9, fontweight="bold", color="#1b5e20")
+        #for year in monthly_rev["Year"].unique():
+        #    year_data = monthly_rev[monthly_rev["Year"] == year]
+        #    for i, row in year_data.iterrows():
+        #       ax5.text(row["Month"], row["pct_share"] + 0.5, f"{row['pct_share']:.1f}%", 
+        #                 ha="center", fontsize=9, fontweight="bold", color="#1b5e20")
 
         plt.xticks(range(1,13), ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
         ax5.set_ylabel("Monthly Revenue Share (%)")
