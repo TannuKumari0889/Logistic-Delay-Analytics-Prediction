@@ -76,11 +76,11 @@ r1_2.metric("Active Drivers", active_drivers)
 r1_3.metric("Terminated", terminated_drivers)
 r1_4.metric("Total Revenue", f"${total_revenue/1_000_000:.2f}M")
 
-r2_1, r2_2, r2_3, r2_4 = st.columns(4)
+r2_1, r2_2, r2_3= st.columns(3)
 r2_1.metric("Top Driver", top_driver_name)
 r2_2.metric("Trips Completed", f"{total_trips:,.0f}")
 r2_3.metric("Total Miles Driven", f"{total_miles/1_000_000:.2f}M")
-r2_4.metric("Profit Margin", "59.38%")
+
 
 st.markdown("---")
 
