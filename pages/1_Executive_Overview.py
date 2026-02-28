@@ -85,7 +85,7 @@ with st.container():
     c4.metric("Fuel Expenses", format_val(total_fuel))
     
     c5, c6, c7, c8 = st.columns(4)
-    c5.metric("Maintenance Cost", format_val(total_maint))
+    c5.metric("Maintenance Cost", total_maint)
     c6.metric("Safety Incident Costs", format_val(total_safe))
     c7.metric("Net Profit", format_val(total_profit))
     c8.metric("Profit Margin", f"{profit_margin:.1f}%")
