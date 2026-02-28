@@ -46,6 +46,7 @@ data = apply_global_filters(data)
 
 drivers = data["drivers"]
 driver_metrics = data["driver_monthly_metrics"]
+loads = data["loads"]
 
 # --------------------------------------------------
 # KPI CALCULATIONS
