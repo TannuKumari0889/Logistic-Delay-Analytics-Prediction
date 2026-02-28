@@ -1,10 +1,10 @@
 import streamlit as st
-
+'''
 # If the user hasn't logged in on the main page, stop them here
 if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
     st.warning("Please log in on the Home page to access this dashboard.")
     st.stop()
-
+'''
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -77,10 +77,8 @@ c2.metric("Avg Revenue / Load", f"${avg_revenue_per_load:,.0f}")
 c3.metric("Total Loads", f"{total_loads:,}")
 c4.metric("On-Time Delivery", f"{on_time_pct:.1f}%")
 
-c5, c6, c7, c8 = st.columns(4)
+c5,  c8 = st.columns(2)
 c5.metric("Avg Load Weight", f"{avg_weight:,.0f} lbs")
-c6.metric("Fuel Surcharge", f"${fuel_surcharge/1_000_000:.2f}M")
-c7.metric("Accessorial Charges", f"${accessorial_charge/1_000_000:.2f}M")
 c8.metric("Profit Margin", f"{profit_margin:.1f}%")
 
 st.markdown("---")
