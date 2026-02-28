@@ -54,7 +54,7 @@ total_drivers = len(drivers)
 active_drivers = len(drivers[drivers["employment_status"] == "Active"])
 terminated_drivers = len(drivers[drivers["employment_status"] == "Terminated"])
 
-total_revenue = driver_metrics["total_revenue"].sum()
+total_revenue = loads["revenue"].sum()
 total_trips = driver_metrics["trips_completed"].sum()
 total_miles = driver_metrics["total_miles"].sum()
 
