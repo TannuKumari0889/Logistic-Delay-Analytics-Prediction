@@ -63,13 +63,15 @@ def format_val(value, is_money=True):
         return f"{prefix}{value/1_000:.1f}K"
     return f"{prefix}{value:,.0f}"
 
+
+Total_Incident_Cost = safety_incidents["claim_amount"].sum()+safety_incidents["vehicle_damage_cost"].sum() +safety_incidents["cargo_damage_cost"].sum()
 # --------------------------------------------------
 # 4. KPI CALCULATIONS
 # --------------------------------------------------
 total_revenue = loads["revenue"].sum()
 total_fuel = fuel_purchases["total_cost"].sum()
 total_maint = maintenance_records["total_cost"].sum()
-total_safe = safety_incidents["cost"].sum() if "cost" in safety_incidents.columns else 0
+total_safe = Total_Incident_Cost
 
 total_profit = total_revenue - (total_fuel + total_maint + total_safe)
 profit_margin = (total_profit / total_revenue * 100) if total_revenue > 0 else 0
