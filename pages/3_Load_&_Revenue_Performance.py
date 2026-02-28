@@ -60,9 +60,7 @@ avg_revenue_per_load = total_revenue / total_loads if total_loads > 0 else 0
 avg_weight = loads["weight_lbs"].mean()
 
 
-#on_time_pct = (loads["delivery_status"] == "On Time").sum() / total_loads * 100 if "delivery_status" in loads.columns and total_loads > 0 else 0
 
-on_time_pct = df['on_time_flag'].mean()
 
 total_fuel_cost = fuel["total_cost"].sum()
 profit_margin = ((total_revenue - total_fuel_cost) / total_revenue) * 100 if total_revenue > 0 else 0
@@ -70,11 +68,11 @@ profit_margin = ((total_revenue - total_fuel_cost) / total_revenue) * 100 if tot
 # --------------------------------------------------
 # 4. KPI DISPLAY
 # --------------------------------------------------
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3 = st.columns(3)
 c1.metric("Total Revenue", f"${total_revenue/1_000_000:.2f}M")
 c2.metric("Avg Revenue / Load", f"${avg_revenue_per_load:,.0f}")
 c3.metric("Total Loads", f"{total_loads:,}")
-c4.metric("On-Time Delivery", f"{on_time_pct:.1f}%")
+
 
 c5,  c8 = st.columns(2)
 c5.metric("Avg Load Weight", f"{avg_weight:,.0f} lbs")
