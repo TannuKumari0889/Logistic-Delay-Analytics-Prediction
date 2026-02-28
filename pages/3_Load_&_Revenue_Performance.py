@@ -58,8 +58,7 @@ total_revenue = loads["revenue"].sum()
 total_loads = loads["load_id"].nunique()
 avg_revenue_per_load = total_revenue / total_loads if total_loads > 0 else 0
 avg_weight = loads["weight_lbs"].mean()
-fuel_surcharge = loads["fuel_surcharge"].sum() 
-accessorial_charge = loads["accessorial_charge"].sum() 
+
 
 #on_time_pct = (loads["delivery_status"] == "On Time").sum() / total_loads * 100 if "delivery_status" in loads.columns and total_loads > 0 else 0
 
