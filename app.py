@@ -11,10 +11,15 @@ st.write(
     This dashboard provides end-to-end analytics across:
 
     • Executive Overview 
+    
     • Fleet & Fuel Analytics
+    
     • Load & Revenue Performance  
+    
     • Driver Performance   
+    
     • Safety & Risk  
+    
     • Trip Delay Prediction
     
     
