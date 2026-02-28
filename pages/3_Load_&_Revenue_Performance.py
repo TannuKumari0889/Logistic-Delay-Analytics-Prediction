@@ -58,10 +58,12 @@ total_revenue = loads["revenue"].sum()
 total_loads = loads["load_id"].nunique()
 avg_revenue_per_load = total_revenue / total_loads if total_loads > 0 else 0
 avg_weight = loads["weight_lbs"].mean()
-fuel_surcharge = loads["fuel_surcharge"].sum() if "fuel_surcharge" in loads.columns else 0
-accessorial_charge = loads["accessorial_charge"].sum() if "accessorial_charge" in loads.columns else 0
+fuel_surcharge = loads["fuel_surcharge"].sum() 
+accessorial_charge = loads["accessorial_charge"].sum() 
 
-on_time_pct = (loads["delivery_status"] == "On Time").sum() / total_loads * 100 if "delivery_status" in loads.columns and total_loads > 0 else 0
+#on_time_pct = (loads["delivery_status"] == "On Time").sum() / total_loads * 100 if "delivery_status" in loads.columns and total_loads > 0 else 0
+
+on_time_pct = df['on_time_flag'].mean()
 
 total_fuel_cost = fuel["total_cost"].sum()
 profit_margin = ((total_revenue - total_fuel_cost) / total_revenue) * 100 if total_revenue > 0 else 0
