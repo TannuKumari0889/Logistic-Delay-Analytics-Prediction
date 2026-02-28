@@ -58,10 +58,6 @@ total_revenue = loads["revenue"].sum()
 total_loads = loads["load_id"].nunique()
 avg_revenue_per_load = total_revenue / total_loads if total_loads > 0 else 0
 avg_weight = loads["weight_lbs"].mean()
-
-
-
-
 total_fuel_cost = fuel["total_cost"].sum()
 profit_margin = ((total_revenue - total_fuel_cost) / total_revenue) * 100 if total_revenue > 0 else 0
 
