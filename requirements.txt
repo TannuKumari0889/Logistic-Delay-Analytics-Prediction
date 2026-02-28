@@ -5,6 +5,5 @@ seaborn
 numpy
 scikit-learn==1.5.1
 gdown
-streamlit
 joblib
 datetime
