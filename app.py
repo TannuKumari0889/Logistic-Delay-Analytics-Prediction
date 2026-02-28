@@ -11,14 +11,13 @@ st.write(
     This dashboard provides end-to-end analytics across:
 
     • Executive Overview 
-    • Fleet Utilization & Performance 
-    • Fuel Cost & Efficiency  
-    • Maintenance & Downtime  
+    • Fleet & Fuel Analytics
     • Load & Revenue Performance  
-    • Route & Trip Efficiency 
-    • Driver Performance  
+    • Driver Performance   
     • Safety & Risk  
-
+    • Trip Delay Prediction
+    
+    
     Use the sidebar to navigate between different dashboards.
     """
 )
