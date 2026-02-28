@@ -1,6 +1,13 @@
+import streamlit as st
+
+# If the user hasn't logged in on the main page, stop them here
+if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
+    st.warning("Please log in on the Home page to access this dashboard.")
+    st.stop()
+
+
 import sys
 import os
-import streamlit as st
 import pandas as pd
 import datetime
 from model_loader import load_assets
