@@ -84,11 +84,11 @@ r1_2.metric("Total Distance", format_metric(total_miles))
 r1_3.metric("Total Trips", f"{total_trips:,}")
 r1_4.metric("Total Fleet", total_trucks)
 
-r2_1, r2_2, r2_3, r2_4 = st.columns(4)
+r2_1, r2_2, r2_3 = st.columns(3)
 r2_1.metric("Active Units", trucks[trucks["status"] == "Active"]["truck_id"].nunique())
 r2_2.metric("Downtime (Hrs)", format_metric(maintenance["downtime_hours"].sum()))
 r2_3.metric("Maint. Events", maintenance["maintenance_id"].nunique())
-r2_4.metric("Trips per Truck", f"{(total_trips/total_trucks):.2f}")
+
 
 st.markdown("---")
 st.subheader("⛽ Fuel Financials & Efficiency")
@@ -98,11 +98,7 @@ r3_2.metric("Total Fuel (Gal)", format_metric(total_gallons))
 r3_3.metric("Avg Price/Gal", f"${(total_spend/total_gallons):.2f}")
 r3_4.metric("Fuel Cost / Mile", f"${(total_spend/total_miles):.2f}")
 
-r4_1, r4_2, r4_3, r4_4 = st.columns(4)
-r4_1.metric("Avg Cost / Trip", format_metric(total_spend/total_trips, "$"))
-r4_2.metric("Avg Cost / Truck", format_metric(total_spend/total_trucks, "$"))
-r4_3.metric("Fleet Avg MPG", f"{(total_miles/total_gallons):.2f}")
-r4_4.metric("Idle Time %", f"{idle_pct:.1f}%")
+
 
 st.markdown("---")
 
