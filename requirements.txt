@@ -3,7 +3,7 @@ pandas
 matplotlib
 seaborn
 numpy
-scikit-learn==1.5.1
+scikit-learn
 gdown
 joblib
 datetime
