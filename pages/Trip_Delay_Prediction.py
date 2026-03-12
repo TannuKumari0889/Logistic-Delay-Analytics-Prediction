@@ -18,7 +18,7 @@ st.title("🚚 Logistics On-Time Prediction Dashboard")
 st.markdown("---")
 
 # Load assets from engine
-model, preprocessor, top_9_features, ui_options, base_cols = load_assets()
+model, preprocessor, top_9_features, ui_options, base_cols = load_assets
 
 # --- UI LOGIC: Define what to show/hide ---
 display_cols = list(base_cols)
