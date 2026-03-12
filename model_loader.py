@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 @st.cache_resource
-def load_assets():  # <--- Make sure this name is EXACTLY 'load_assets'
+def load_assets(): 
     model = joblib.load("final_model.pkl")
     preprocessor = joblib.load("preprocessor.pkl")
     important_features = joblib.load("important_features.pkl")[:9]
