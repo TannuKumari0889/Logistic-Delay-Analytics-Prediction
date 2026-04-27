@@ -89,13 +89,13 @@ The dataset was sourced from Kaggle and consists of 14 interconnected tables, en
 - Deployed analytics solution using Streamlit
 
 ### ⚠️ Challenges Faced
-- 🔹 Complex Data Structure
+- Complex Data Structure
 Managing and understanding relationships across 14 tables
 
-- 🔹 Data Understanding
+- Data Understanding
 Interpreting logistics operations and aligning data accordingly
 
-- 🔹 Insight Extraction
+- Insight Extraction
 Identifying meaningful patterns from large-scale operational data
 
 ### ✅ Solutions Implemented
