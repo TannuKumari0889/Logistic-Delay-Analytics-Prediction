@@ -58,7 +58,7 @@ The dataset was sourced from Kaggle and consists of 14 interconnected tables, en
 - Created a structured data model for efficient querying
 
 ##### 5. Dashboard Development (Power BI)
-- Developed interactive dashboards to monitor:
+-- Developed interactive dashboards to monitor:
   - Fleet performance
   - Delivery delays and on-time metrics
   - Fuel and maintenance costs
