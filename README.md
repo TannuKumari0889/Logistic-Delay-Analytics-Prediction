@@ -39,25 +39,25 @@ The dataset was sourced from Kaggle and consists of 14 interconnected tables, en
 - Maintenance Records
 
 ### 🔍 Approach & Methodology
-1. Data Understanding
+##### 1. Data Understanding
 - Explored relationships across 14 tables
 - Understood operational flow: shipments → trips → deliveries
 
-2. Data Cleaning & Preparation
+##### 2. Data Cleaning & Preparation
 - Handled minor inconsistencies in data
 - Verified absence of duplicates and null values
 - Structured data for analysis
 
-3. Exploratory Data Analysis (EDA)
+##### 3. Exploratory Data Analysis (EDA)
 - Analyzed delivery performance and trip patterns
 - Studied fuel consumption and maintenance trends
 - Identified key operational inefficiencies
 
-4. Data Modeling
+##### 4. Data Modeling
 - Built relationships between multiple tables
 - Created a structured data model for efficient querying
 
-5. Dashboard Development (Power BI)
+##### 5. Dashboard Development (Power BI)
 - Developed interactive dashboards to monitor:
   - Fleet performance
   - Delivery delays and on-time metrics
@@ -65,19 +65,19 @@ The dataset was sourced from Kaggle and consists of 14 interconnected tables, en
   - Driver performance
   - Route efficiency
 
-6. Report Publishing
+##### 6. Report Publishing
 - Published dashboards using Power BI Service
 - Enabled easy access and sharing of insights
 
-7. Predictive Modeling
+##### 7. Predictive Modeling
 - Built a Trip Delay Prediction Model using Python
 - Identified factors contributing to delays
 
-8. Deployment
+##### 8. Deployment
 - Deployed the prediction model using Streamlit App
 - Enabled interactive user input for predictions
 
-9. Stakeholder Communication
+##### 9. Stakeholder Communication
 - Created a structured PowerPoint presentation
 - Communicated insights, findings, and recommendations clearly
 
