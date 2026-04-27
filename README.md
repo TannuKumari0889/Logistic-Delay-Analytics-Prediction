@@ -116,7 +116,7 @@ Identifying meaningful patterns from large-scale operational data
 
 
 ### 📊 Power BI Dashboard
-👉 View Dashboard
+👉 [View Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZGEwMTI5MmMtMTNhMy00ZjhjLTg2NmUtZTBiNTEzZTFkODJkIiwidCI6ImIzODM4Yjc2LTIwODEtNGIzNS1iNDUzLTI4NjE1ZGMyMmZjNyJ9&pageName=ee7a36209545750ab878)
 
 ### 🤖 Streamlit App (Prediction Model)
 👉 View App
