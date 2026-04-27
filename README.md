@@ -123,7 +123,7 @@ Identifying meaningful patterns from large-scale operational data
 
 
 ### 📽️ Project Presentation
-👉 View Presentation
+👉 [View Presentation](https://github.com/TannuKumari0889/Logistic-Delay-Analytics-Prediction/raw/main/Logistics%20Operations%20Analytics%20Project(Final).pptx)
 
 ### 💡 Key Learnings
 - Handling and analyzing multi-table relational datasets
