@@ -119,7 +119,7 @@ Identifying meaningful patterns from large-scale operational data
 👉 [View Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZGEwMTI5MmMtMTNhMy00ZjhjLTg2NmUtZTBiNTEzZTFkODJkIiwidCI6ImIzODM4Yjc2LTIwODEtNGIzNS1iNDUzLTI4NjE1ZGMyMmZjNyJ9&pageName=ee7a36209545750ab878)
 
 ### 🤖 Streamlit App 
-👉 [View App](logistic-delay-analytics-prediction-njr5yqc4tahkkcxmsxzvnb)
+👉 [View App](logistic-delay-analytics-prediction-njr5yqc4tahkkcxmsxzvnb.streamlit.app)
 
 
 ### 📽️ Project Presentation
